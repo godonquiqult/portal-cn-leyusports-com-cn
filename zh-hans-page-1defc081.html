@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V体育 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f8fb;
+            color: #1e2229;
+            line-height: 1.65;
+            scroll-behavior: smooth;
+        }
+
+        /* 深色头图 —— 杂志式横幅 */
+        .hero {
+            background: #0b0d12 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2ZmZmZmZjA1IiBvcGFjaXR5PSIwLjAzIi8+PC9zdmc+') repeat;
+            background-size: 40px 40px;
+            color: #f0f2f4;
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #f6f8fb);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+            color: #b9bec7;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 0.4px;
+            color: #cad0d9;
+            margin-top: 1.5rem;
+        }
+
+        /* 浅色正文区 —— 三栏杂志卡片 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #6c7789;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #dce1e8;
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 720px) {
+            .intro-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 550;
+            margin-bottom: 0.9rem;
+            border-left: 4px solid #2b5f9e;
+            padding-left: 0.75rem;
+            color: #11161e;
+        }
+
+        .card p {
+            font-size: 0.96rem;
+            color: #3b424e;
+            margin-bottom: 0.6rem;
+        }
+
+        .card .meta {
+            font-size: 0.8rem;
+            color: #7f8a9b;
+            margin-top: 0.8rem;
+            border-top: 1px solid #eef0f3;
+            padding-top: 0.8rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #1e6bbf;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.1s;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #0a3f7a;
+            border-bottom-color: #1e6bbf;
+        }
+
+        .inline-link-highlight {
+            background: linear-gradient(to right, #e5effa, transparent);
+            padding: 0 0.15rem;
+        }
+
+        /* FAQ 摘要 / 提示区 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+            margin-top: 2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .faq-item .q {
+            font-weight: 550;
+            color: #11161e;
+            min-width: 3.8rem;
+        }
+
+        .faq-item .a {
+            color: #3b424e;
+            font-size: 0.95rem;
+        }
+
+        .faq-item .a em {
+            font-style: normal;
+            background: #eef3fc;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* 页尾 */
+        .page-footer {
+            background: #0b0d12;
+            color: #9ca4b0;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e232e;
+        }
+
+        .page-footer a {
+            color: #b7c3d4;
+            border-bottom: 1px solid #3b4658;
+        }
+
+        .page-footer a:hover {
+            color: #e9edf2;
+            border-bottom-color: #9bb4d4;
+        }
+
+        .page-footer .footer-hint {
+            max-width: 600px;
+            margin: 0 auto 0.5rem;
+            letter-spacing: 0.2px;
+        }
+
+        .page-footer .small {
+            font-size: 0.8rem;
+            color: #6b7585;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 / 杂志横幅 -->
+    <header class="hero">
+        <h1>V体育 · 用途速览</h1>
+        <p>一个帮助用户快速了解体育站点定位的信息页。从界面到内容，从场景到问答，用最少步骤掌握平台核心。</p>
+        <span class="badge">专题 · 杂志式导览</span>
+    </header>
+
+    <!-- 浅色正文区：三段自然介绍 + FAQ 摘要 -->
+    <main class="container">
+        <!-- 隐性的section标题 -->
+        <div class="section-label">站点脉络</div>
+
+        <!-- 三卡片杂志式介绍 -->
+        <div class="intro-grid">
+            <article class="card">
+                <h3>第一印象 · 用途识别</h3>
+                <p>当用户首次打开 <a href="https://zh-hans-vtiyu.com">V体育</a>，最直接的感受是信息层级与运动内容的集中度。页面以直观的导航和分类卡片呈现，无需额外搜索即可定位到感兴趣的体育项目、赛程或数据模块。整体结构偏重效率，减少冗余跳转。</p>
+                <p>从入口到内容，中间几乎没有干扰性元素。这种设计让新访问者能在 10 秒内判断出：这是一个围绕体育资讯、数据、赛事整合的平台，而非单一社区或电商。</p>
+                <div class="meta">适用场景 · 快速探索</div>
+            </article>
+
+            <article class="card">
+                <h3>内容构成 · 信息密度</h3>
+                <p>站点主要涵盖三大模块：实时赛况与比分、球队/运动员档案、以及专题分析。每个模块都附带时间戳或数据来源，力求克制、避免夸大。例如比分页不显示未经验证的预测，档案区仅收录已公开的生涯数据。</p>
+                <p>部分区域采用卡片式折叠，默认只展示摘要，用户可根据需要展开。这种渐进式呈现既维持了首页的清爽，也保留了深度浏览的可能。整体语言风格偏书面，少用感叹词。</p>
+                <div class="meta">特点 · 克制与层次</div>
+            </article>
+
+            <article class="card">
+                <h3>使用场景 · 谁在用它</h3>
+                <p>从访问模式来看，用户多为体育爱好者、轻度数据查询者以及赛前信息收集者。他们通常带着明确目标：查某场比赛时间、对比球员近期表现，或快速浏览当日赛事列表。<a href="https://zh-hans-vtiyu.com">V体育</a> 没有强制注册或内容锁，大部分静态信息可直接浏览。</p>
+                <p>也有部分用户将其作为赛事提醒的辅助页面——因为站点对移动端适配较完善，在通勤或碎片时间打开即可获取更新，无需下载额外应用。</p>
+                <div class="meta">场景 · 轻量 & 适配</div>
+            </article>
+        </div>
+
+        <!-- FAQ 摘要——以问句引出提示，自然包含链接 -->
+        <section class="faq-summary">
+            <h2>❓ 常见用途 · 快速问答</h2>
+
+            <div class="faq-item">
+                <span class="q">Q1</span>
+                <div class="a">这个网站主要用来做什么？—— 提供体育赛事信息、数据查询和内容聚合。首页直接导向具体运动类别，不绕路。想了解整体定位可前往 <a href="https://zh-hans-vtiyu.com">V体育</a> 浏览。</div>
+            </div>
+
+            <div class="faq-item">
+                <span class="q">Q2</span>
+                <div class="a">需要登录才能看到内容吗？—— 绝大多数页面（赛程、档案、文章摘要）无需登录即可阅读。部分个性化功能（如关注球队）可能需要账户，但不会强制阻断浏览。</div>
+            </div>
+
+            <div class="faq-item">
+                <span class="q">Q3</span>
+                <div class="a">信息更新频率怎么样？—— 比分和赛程基本实时或准实时，专题分析文章按周或赛事节点更新。每个内容块都标注了时间，用户可自行判断时效。</div>
+            </div>
+
+            <div class="faq-item">
+                <span class="q">Q4</span>
+                <div class="a">移动端体验如何？—— 适配了常见手机屏幕，菜单折叠、卡片自适应。在微信或浏览器内打开均能正常排版，无横向滚动或遮挡。</div>
+            </div>
+
+            <div style="margin-top: 1.2rem; font-size: 0.9rem; color: #4f5a6b; border-top: 1px solid #e6eaf0; padding-top: 1rem;">
+                📌 以上摘要基于公开界面与常规使用体验整理，具体功能以实际站点为准。
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页尾访问提示 -->
+    <footer class="page-footer">
+        <div class="footer-hint">
+            🏁 本页为杂志式专题介绍，帮助用户快速理解站点定位。若希望直接浏览内容，可访问 
+            <a href="https://zh-hans-vtiyu.com">V体育</a> 查看完整界面。
+        </div>
+        <div class="small">信息页 · 仅作客观说明，无诱导或误导成分。所有描述基于实际页面结构。</div>
+    </footer>
+
+</body>
+</html>
